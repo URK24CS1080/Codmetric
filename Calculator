@@ -1,0 +1,90 @@
+import java.util.Scanner;
+public class calculator
+{
+	public static double addition(double x, double y){
+		return x + y;
+	}
+	public static double subtraction(double x, double y){
+		return x - y;
+	}
+	public static double multiplication(double x, double y) {
+		return x * y;
+	}
+	public static double division(double x, double y) {
+		if (y == 0) {
+			System.out.println("Error, cannot divide by zero");
+		}
+		return x / y;
+	}
+	public static void main(String az[]) {
+			Scanner sc = new Scanner(System.in);
+			
+			while(true) {
+				System.out.println("Calculator Menu");
+				System.out.println("1. Addition");
+				System.out.println("2. Subtraction");
+				System.out.println("3. Multiplication");
+				System.out.println("4. Division");
+				System.out.println("5. Exit");
+				System.out.println("Enter your choice: ");
+				int choice = sc.nextInt();
+				
+				if (choice == 5) {
+					System.out.println("Exiting... Thank you");
+					break;
+				}
+				
+				try {
+					double ans;
+					double num_1;
+					double num_2;
+					
+					switch(choice) {
+				      case 1:
+				          System.out.println("Enter 1st number: ");
+				          num_1 = sc.nextDouble();
+				          System.out.println("Enter 2nd number: ");
+				          num_2 = sc.nextDouble();
+				          ans = addition(num_1 , num_2);
+				          System.out.println("Result: "+ans);
+				          break;
+				      
+				      case 2:
+				          System.out.println("Enter 1st number: ");
+				          num_1 = sc.nextDouble();
+				          System.out.println("Enter 2nd number: ");
+				          num_2 = sc.nextDouble();
+				          ans = subtraction(num_1 , num_2);
+				          System.out.println("Result: "+ans);
+				          break;
+				          
+				      case 3:
+				          System.out.println("Enter 1st number: ");
+				          num_1 = sc.nextDouble();
+				          System.out.println("Enter 2nd number: ");
+				          num_2 = sc.nextDouble();
+				          ans = multiplication(num_1 , num_2);
+				          System.out.println("Result: "+ans);
+				          break;
+				          
+				      case 4:
+				          System.out.println("Enter 1st number: ");
+				          num_1 = sc.nextDouble();
+				          System.out.println("Enter 2nd number: ");
+				          num_2 = sc.nextDouble();
+				          ans = division(num_1 , num_2);
+				          System.out.println("Result: "+ans);
+				          break;
+				          
+				      default:
+				          System.out.println("Please enter a valid choice!");
+				    }
+			}
+				catch(Exception e) {
+					System.out.println(e);
+				}
+				
+			}
+		sc.close();
+	}
+}
