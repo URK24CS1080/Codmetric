@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int marks;
+    String grade;
+    Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+        this.grade = calculateGrade(marks);
+    }
+    String calculateGrade(int marks) {
+        if (marks >= 90) return "A+";
+        else if (marks >= 80) return "A";
+        else if (marks >= 70) return "B";
+        else if (marks >= 60) return "C";
+        else if (marks >= 50) return "D";
+        else return "F";
+    }
+    public String toString() {
+        return String.format("%-20s %-10d %-5s", name, marks, grade);
+    }
+}
+public class StudentGradeCalculator {
+    public static void main(String[] args) {
+        ArrayList<Student> students = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
+        sc.nextLine(); 
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print("\nEnter student name: ");
+            String name = sc.nextLine();
+            int marks;
+            while (true) {
+                System.out.print("Enter marks (0-100): ");
+                if (sc.hasNextInt()) {
+                    marks = sc.nextInt();
+                    sc.nextLine(); 
+                    if (marks >= 0 && marks <= 100) break;
+                } else {
+                    sc.next(); 
+                }
+                System.out.println("Invalid marks! Please enter a number between 0 and 100");
+            }
+            students.add(new Student(name, marks));
+        }
+        System.out.println("\nStudent Report");
+        System.out.printf("%-20s %-10s %-5s\n", "Name", "Marks", "Grade");
+        for (Student s : students) {
+            System.out.println(s);
+        }}}
